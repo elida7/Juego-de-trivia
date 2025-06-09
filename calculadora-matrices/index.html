@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Matrices</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Calculadora de Matrices Interactivas</h1>
+        <h2>URBANET</h2>
+    </header>
+
+    <main>
+        <section id="matrix-input">
+            <h2>Matrices de entrada</h2>
+            <div class="matrix-container">
+                <h3>Matriz A</h3>
+                <div id="MatrixA-grid class="matrix-grid"></div>
+                <input type="number" id="matrixA-size" min="2" max="10" value="3">
+                <button id="generateMatrixA">Generar Matriz A</button>
+                <button id="clearMatrixA">Limpiar A</button>
+            </div>
+
+            <div class="matrix-container">
+                <h3>Matriz B</h3>
+                <div id="matrixB-grid" class="matrix-grid">
+                    </div>
+                <input type="number" id="matrixB-size" min="2" max="10" value="3">
+                <button id="generateMatrixB">Generar Matriz B</button>
+                <button id="clearMatrixB">Limpiar B</button>
+            </div>
+            <button id="loadExample">Cargar Ejemplo (2x2)</button>
+            <button id="clearAllMatrices">Limpiar Todas</button>
+        </section>
+
+        <section id="operations">
+            <h2>Operaciones</h2>
+            <div class="operation-buttons">
+                <button id="addMatrices">A + B</button>
+                <button id="subtractAB">A - B</button>
+                <button id="subtractBA">B - A</button>
+                <button id="multiplyMatrices">A × B</button>
+                <input type="number" id="scalarInput" placeholder="Escalar k" value="2">
+                <button id="scalarMultiplyA">k × A</button>
+                <button id="scalarMultiplyB">k × B</button>
+                <button id="transposeA">A<sup>T</sup></button>
+                <button id="transposeB">B<sup>T</sup></button>
+                <button id="determinantA">det(A)</button>
+                <button id="determinantB">det(B)</button>
+                <button id="inverseA">A<sup>-1</sup></button>
+                <button id="inverseB">B<sup>-1</sup></button>
+                <input type="number" id="identitySize" min="2" max="10" value="3">
+                <button id="identityMatrix">Matriz Identidad I<sub>n</sub></button>
+            </div>
+        </section>
+
+         <section id="results">
+            <h2>Resultados</h2>
+            <div id="errorMessage" class="message error"></div>
+            <div id="successMessage" class="message success"></div>
+
+            <div id="resultMatrixContainer" class="matrix-container hidden">
+                <h3>Matriz Resultado</h3>
+                <div id="resultMatrix-grid" class="matrix-grid"></div>
+            </div>
+
+            <div id="additionalResults">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Lenguaje de Clientes Web - URU</p>
+    </footer>
+
+    <script src="js/matrix-operations.js"></script>
+    <script src="js/ui-handlers.js"></script>
+    <script src="js/main.js"></script>        
 </body>
 </html>
