@@ -75,7 +75,7 @@ section {
 
 /* Área de input de matrices */
 #matrix-input-area {
-    display: flex; /* Usamos flexbox para las dos matrices una al lado de la otra */
+    display: flex; /* flexbox para las dos matrices una al lado de la otra */
     flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
     gap: var(--gap-size);
     justify-content: center; /* Centra las matrices */
