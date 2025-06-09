@@ -8,55 +8,58 @@
 </head>
 <body>
     <header>
-        <h1>Calculadora de Matrices Interactivas</h1>
-        <h2>URBANET</h2>
+        <h1>Calculadora de Matrices</h1>
     </header>
 
     <main>
-        <section id="matrix-input">
-            <h2>Matrices de entrada</h2>
-            <div class="matrix-container">
-                <h3>Matriz A</h3>
-                <div id="MatrixA-grid class="matrix-grid"></div>
+        <section id="matrix-setup">
+            <h2>Configuracion de Matrices</h2>
+            <div class="input-group">
+                <label for="matrix-size">Tamaño de Matrices (nxn)</label>
                 <input type="number" id="matrixA-size" min="2" max="10" value="3">
-                <button id="generateMatrixA">Generar Matriz A</button>
+                <button id="createMatrices">Crear Matrices </button>
+                <button id="randomizeMatrices">Generar Aleatorias</button>
+                <button id="loadExample">Cargar Ejemplo (2x2)</button>
                 <button id="clearMatrixA">Limpiar A</button>
             </div>
-
-            <div class="matrix-container">
-                <h3>Matriz B</h3>
-                <div id="matrixB-grid" class="matrix-grid">
-                    </div>
-                <input type="number" id="matrixB-size" min="2" max="10" value="3">
-                <button id="generateMatrixB">Generar Matriz B</button>
-                <button id="clearMatrixB">Limpiar B</button>
-            </div>
-            <button id="loadExample">Cargar Ejemplo (2x2)</button>
-            <button id="clearAllMatrices">Limpiar Todas</button>
         </section>
 
-        <section id="operations">
+        <section id="matrix-input-area" class="hidden">
+            <div class="matrix-input-section">
+                <h3>Matriz A</h3>
+                <div id="matrixA-grid" class="matrix-grid"></div>
+            </div>
+            <div class="matrix-input-section">
+                <h3>Matriz B</h3>
+                <div id="matrixB-grid" class="matrix-grid"></div>
+            </div>
+        </section>
+
+        <section id="operations" class="hidden">
             <h2>Operaciones</h2>
-            <div class="operation-buttons">
+            <div class="operation-buttons-group">
                 <button id="addMatrices">A + B</button>
                 <button id="subtractAB">A - B</button>
                 <button id="subtractBA">B - A</button>
                 <button id="multiplyMatrices">A × B</button>
-                <input type="number" id="scalarInput" placeholder="Escalar k" value="2">
-                <button id="scalarMultiplyA">k × A</button>
-                <button id="scalarMultiplyB">k × B</button>
+                <div class="scalar-input-group">
+                    <input type="number" id="scalarInput" placeholder="Escalar k" value="2" step="any">
+                    <button id="scalarMultiplyA">k × A</button>
+                    <button id="scalarMultiplyB">k × B</button>
+                </div>
+            </div>
+            <div class="operation-buttons-group"></div>
                 <button id="transposeA">A<sup>T</sup></button>
                 <button id="transposeB">B<sup>T</sup></button>
                 <button id="determinantA">det(A)</button>
                 <button id="determinantB">det(B)</button>
                 <button id="inverseA">A<sup>-1</sup></button>
                 <button id="inverseB">B<sup>-1</sup></button>
-                <input type="number" id="identitySize" min="2" max="10" value="3">
                 <button id="identityMatrix">Matriz Identidad I<sub>n</sub></button>
             </div>
         </section>
 
-         <section id="results">
+         <section id="results-area" class="hidden">
             <h2>Resultados</h2>
             <div id="errorMessage" class="message error"></div>
             <div id="successMessage" class="message success"></div>

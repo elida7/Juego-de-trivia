@@ -1,13 +1,14 @@
-/* Variables para colores y tamaños */
+/* Variables CSS para colores y tamaños */
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
+    --primary-color: #8400ff;
+    --secondary-color: #6a6175;
     --success-color: #28a745;
     --error-color: #dc3545;
     --background-light: #f8f9fa;
     --text-dark: #343a40;
-    --border-color: #dee2e6;
+    --border-color: #d9d1e7;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --gap-size: 15px;
 }
 
 body {
@@ -17,6 +18,9 @@ body {
     background-color: var(--background-light);
     color: var(--text-dark);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -27,3 +31,249 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+h1, h2, h3 {
+    color: var(--text-dark);
+    margin-top: 20px;
+}
+
+main {
+    flex-grow: 1; /* Permite que main ocupe el espacio restante */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre secciones principales */
+}
+
+section {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+/* Configuración de matrices */
+#matrix-setup .input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-size);
+    align-items: center;
+    justify-content: center;
+}
+
+#matrix-setup .input-group label {
+    font-weight: bold;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+#matrix-setup .input-group input[type="number"] {
+    width: 80px; /* Ancho fijo para el tamaño de la matriz */
+}
+
+/* Área de input de matrices */
+#matrix-input-area {
+    display: flex; /* Usamos flexbox para las dos matrices una al lado de la otra */
+    flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+    gap: var(--gap-size);
+    justify-content: center; /* Centra las matrices */
+}
+
+.matrix-input-section {
+    flex: 1; /* Permite que cada sección de matriz crezca y ocupe espacio */
+    min-width: 280px; /* Ancho mínimo antes de apilarse */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* CSS Grid para las matrices */
+.matrix-grid {
+    display: grid;
+    gap: 5px; /* Espacio entre los elementos de la matriz */
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    width: fit-content; /* Ajusta el ancho al contenido */
+    max-width: 100%; /* Evita desbordamiento en pantallas pequeñas */
+    overflow-x: auto; /* Permite scroll horizontal si la matriz es muy grande */
+}
+
+.matrix-grid input[type="number"] {
+    width: 60px; /* Ancho fijo para los campos de entrada */
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+}
+
+.matrix-result-cell {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #c0c0c0; /* Un borde diferente para resultados */
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    background-color: #e0e0e0; /* Fondo diferente para resultados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+/* Estilos para botones */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+    transform: translateY(1px);
+}
+
+/* Grupos de botones de operación */
+.operation-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--gap-size); /* Espacio entre grupos de botones */
+    justify-content: center;
+}
+
+.scalar-input-group {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.scalar-input-group input {
+    width: 80px; /* Ancho para el input escalar */
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Mensajes de error/éxito */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none; /* Por defecto ocultos, se muestran con JS */
+    text-align: center;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Contenedor de resultado */
+#resultMatrixContainer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#resultMatrixContainer h3 {
+    margin-bottom: 10px;
+}
+
+#additionalResults {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+#additionalResults h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #matrix-input-area {
+        flex-direction: column; /* Apila las matrices A y B verticalmente */
+    }
+
+    .matrix-input-section {
+        min-width: unset; /* Elimina el ancho mínimo para permitir mayor flexibilidad */
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    #matrix-setup .input-group,
+    .operation-buttons-group {
+        flex-direction: column; /* Apila botones y inputs */
+        align-items: stretch; /* Estira elementos para ocupar todo el ancho */
+    }
+
+    #matrix-setup .input-group label {
+        width: 100%;
+        text-align: center;
+    }
+
+    #matrix-setup .input-group input[type="number"],
+    .scalar-input-group input,
+    button {
+        width: 100%;
+    }
+
+    .scalar-input-group {
+        flex-direction: column;
+    }
+}
