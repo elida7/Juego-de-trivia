@@ -224,7 +224,7 @@ function getCofactor(matrix, p, q) {
 }
 
 /**
- * Calcula el determinante de una matriz cuadrada.
+ * Calcular el determinante de una matriz cuadrada.
  * Usa expansión por cofactores.
  * @param {number[][]} matrix
  * @returns {number} El determinante de la matriz.

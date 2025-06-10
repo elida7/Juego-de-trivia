@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ocultar mensajes al cambiar el tamaño si ya hay matrices visibles
     matrixSizeInput.addEventListener('change', () => {
-        // No ocultamos las matrices si el usuario solo está ajustando el tamaño
+        // No se ocultan las matrices si el usuario solo está ajustando el tamaño
         // antes de hacer clic en "Crear Matrices".
         // Sin embargo, si ya hay matrices, esto no afectará los grids existentes hasta que se "creen" de nuevo.
         hideMessages(); 
