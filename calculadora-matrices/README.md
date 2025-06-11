@@ -25,9 +25,8 @@
 
 ## Cómo Ejecutar el Proyecto
 
-1.  **Clonar o Descargar:** Descarga o clona este repositorio en tu máquina local.
+1.  **Clonar o Descargar:** Descarga o clona este repositorio
 2.  **Abrir `index.html`:** Navega hasta la carpeta raíz del proyecto y abre el archivo `index.html` en tu navegador web preferido (Chrome, Firefox, Edge, etc.).
-    * **Recomendación:** Para un mejor desarrollo y para evitar problemas de caché, se aconseja usar una extensión de servidor local como "Live Server" en VS Code.
 
 ## Problemas
 A pesar de las diversas correcciones y la refactorización del código para garantizar la coherencia de los `id` de los elementos HTML con sus referencias en JavaScript, **los botones de la interfaz de usuario aún no responden al hacer clic sobre ellos**.
