@@ -40,5 +40,7 @@ Sin embargo, el problema persiste.
 
 No he popido diagnosticar por qué los botones no están ejecutando las funciones JavaScript asociadas, a pesar de que el código parece estar correctamente estructurado y las IDs han sido verificadas múltiples veces. 
 
+Lo resolvi instalando la extencion Live Serve
+
 ## Elida Cubaque 
 ## 27418291
