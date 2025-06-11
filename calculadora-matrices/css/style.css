@@ -46,7 +46,7 @@ main {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Espacio entre secciones principales */
+    gap: 30px; /* espacio entre secciones principales */
 }
 
 section {

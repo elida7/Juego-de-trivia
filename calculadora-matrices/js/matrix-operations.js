@@ -196,31 +196,29 @@ export function generateIdentityMatrix(n) {
  * Obtiene el cofactor (submatriz) para el cálculo del determinante/inversa.
  * @param {number[][]} matrix
  * @param {number} p Fila a excluir
- * @param {number} q Columna a excluir
- * @returns {number[][]} Submatriz
+ * @param {number} q Columna a excluir (row index)
+ * @returns {number[][]} Submatriz (column index)
  */
 function getCofactor(matrix, p, q) {
     const n = matrix.length;
-    const temp = [];
-    let i = 0, j = 0;
+    const cofactorMatrix  = [];
+    let currentRow = 0; // Índice de fila para la submatriz
+    let currentCol = 0; // Índice de columna para la submatriz
 
-    for (let row = 0; row < n; row++) {
-        for (let col = 0; col < n; col++) {
-            // Copiar solo elementos que no están en la fila p ni en la columna q
-            if (row !== p && col !== q) {
-                if (j === (n - 1)) { // Si hemos llenado una fila de la submatriz
-                    temp.push([]);
-                    i++;
-                    j = 0;
-                }
-                // Asegurarse de que el array interno exista antes de asignar
-                if (!temp[i]) temp[i] = [];
-                temp[i][j++] = matrix[row][col];
-            }
+    for (let i = 0; i < n; i++) {
+        if (i === p) continue; // si es la fila a excluir saltar
+
+        cofactorMatrix.push([]); // Iniciar una nueva fila en la submatriz
+        currentCol = 0; // Reiniciar el índice de columna para la nueva fila
+
+        for (let j = 0; j < n; j++) {
+            if (j === q) continue; // Si es la columna a excluir, saltar
+
+            cofactorMatrix[currentRow][currentCol++] = matrix[i][j];
         }
+        currentRow++; // Mover a la siguiente fila en la submatriz
     }
-    // Filtrar filas vacías o incompletas que podrían crearse si el tamaño de la matriz original era 1x1
-    return temp.filter(row => row && row.length > 0);
+    return cofactorMatrix;
 }
 
 /**

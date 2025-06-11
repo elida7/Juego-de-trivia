@@ -14,31 +14,33 @@ import * as MatrixOperations from './matrix-operations.js'; // Necesario para pa
 
 // Referencias a elementos del DOM
 const matrixSizeInput = document.getElementById('matrix-size');
-const createMatricesButton = document.getElementById('createMatrices');
-const randomizeMatricesButton = document.getElementById('randomizeMatrices');
-const loadExampleButton = document.getElementById('loadExample');
-const clearAllMatricesButton = document.getElementById('clearAllMatrices');
+
+//Botones de configuracion
+const createMatricesButton = document.getElementById('createMatricesButton');
+const randomizeMatricesButton = document.getElementById('randomizeMatricesButton');
+const loadExampleButton = document.getElementById('loadExampleButton');
+const clearAllMatricesButton = document.getElementById('clearAllMatricesButton');
 
 // Botones de operaciones
-const addMatricesButton = document.getElementById('addMatrices');
-const subtractABButton = document.getElementById('subtractAB');
-const subtractBAButton = document.getElementById('subtractBA');
-const multiplyMatricesButton = document.getElementById('multiplyMatrices');
-const scalarMultiplyAButton = document.getElementById('scalarMultiplyA');
-const scalarMultiplyBButton = document.getElementById('scalarMultiplyB');
-const transposeAButton = document.getElementById('transposeA');
-const transposeBButton = document.getElementById('transposeB');
-const determinantAButton = document.getElementById('determinantA');
-const determinantBButton = document.getElementById('determinantB');
-const inverseAButton = document.getElementById('inverseA');
-const inverseBButton = document.getElementById('inverseB');
-const identityMatrixButton = document.getElementById('identityMatrix');
+const addMatricesButton = document.getElementById('addMatricesButton');
+const subtractABButton = document.getElementById('subtractABButton');
+const subtractBAButton = document.getElementById('subtractBAButton');
+const multiplyMatricesButton = document.getElementById('multiplyMatricesButton');
+const scalarMultiplyAButton = document.getElementById('scalarMultiplyAButton');
+const scalarMultiplyBButton = document.getElementById('scalarMultiplyBButton');
+const transposeAButton = document.getElementById('transposeAButton');
+const transposeBButton = document.getElementById('transposeBButton');
+const determinantAButton = document.getElementById('determinantAButton');
+const determinantBButton = document.getElementById('determinantBButton');
+const inverseAButton = document.getElementById('inverseAButton');
+const inverseBButton = document.getElementById('inverseBButton');
+const identityMatrixButton = document.getElementById('identityMatrixButton');
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar la interfaz (limpiar y ocultar secciones)
+    // 1 Inicializar la interfaz (limpiar y ocultar secciones)
     clearAll(); 
 
-    // Event Listeners para la configuración inicial de matrices
+    //2 Configurar los Event Listeners para los botones de configuracion
     createMatricesButton.addEventListener('click', createMatrices);
     randomizeMatricesButton.addEventListener('click', randomizeMatrices);
     loadExampleButton.addEventListener('click', loadExample);
@@ -46,17 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ocultar mensajes al cambiar el tamaño si ya hay matrices visibles
     matrixSizeInput.addEventListener('change', () => {
-        // No se ocultan las matrices si el usuario solo está ajustando el tamaño
-        // antes de hacer clic en "Crear Matrices".
-        // Sin embargo, si ya hay matrices, esto no afectará los grids existentes hasta que se "creen" de nuevo.
-        hideMessages(); 
+       hideMessages(); 
     });
 
 
-    // Event Listeners para operaciones binarias
+    // 3 event listener para los botones de operacion
     addMatricesButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.addMatrices, '+'));
-    subtractABButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.subtractMatrices, '-'));
-    subtractBAButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.subtractMatrices, '-', true)); // isSubtractionBA = true
+    subtractABButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.subtractMatrices, '-', true)); // isSubtractionBA = true
+    subtractBAButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.subtractMatrices, '-', false)); // A - B, for clarity, though default is false
     multiplyMatricesButton.addEventListener('click', () => handleBinaryMatrixOperation(MatrixOperations.multiplyMatrices, '×'));
 
     // Event Listeners para multiplicación por escalar

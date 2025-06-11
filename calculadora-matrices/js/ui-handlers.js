@@ -120,6 +120,7 @@ export function displayMatrix(gridElement, matrix, isInputGrid = true) {
  * Inicializa y muestra los grids de matrices A y B con inputs vacíos.
  */
 export function createMatrices() {
+    console.log("createMatrices function called."); // Debugging log
     hideMessages();
     additionalResultsDisplay.innerHTML = ''; // Limpiar resultados adicionales
     resultMatrixContainer.classList.add('hidden'); // Ocultar matriz resultado
@@ -145,6 +146,7 @@ export function createMatrices() {
 
     } catch (error) {
         displayMessage(error.message, true);
+        // Si hay un error, ocultar las secciones para evitar una interfaz incompleta
         matrixInputArea.classList.add('hidden');
         operationsSection.classList.add('hidden');
         resultsArea.classList.add('hidden');
@@ -250,10 +252,11 @@ export function clearAll() {
  * @returns {{matrixA: number[][], matrixB: number[][]}}
  */
 function getMatricesForOperation() {
-    if (!currentMatrixA || !currentMatrixB || currentMatrixSize === 0) {
-        throw new Error("Por favor, primero crea las matrices utilizando el botón 'Crear Matrices' o 'Generar Aleatorias'.");
+    // comprobar que el tamaño actual es válido antes de intentar leer los inputs
+    if (currentMatrixSize === 0 || isNaN(currentMatrixSize) || currentMatrixSize < 2 || currentMatrixSize > 10) {
+        throw new Error("El tamaño de la matriz no es válido. Por favor, crea las matrices primero.");
     }
-    // Siempre intentamos leer los valores actuales de los inputs
+    // Siempre intentar leer los valores actuales de los inputs
     const matrixA = getMatrixValuesFromInputs(matrixAGrid, currentMatrixSize);
     const matrixB = getMatrixValuesFromInputs(matrixBGrid, currentMatrixSize);
     return { matrixA, matrixB };
