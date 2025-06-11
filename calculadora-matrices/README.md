@@ -38,7 +38,7 @@ He intentado:
 
 Sin embargo, el problema persiste. 
 
-asistencia para diagnosticar por qué los botones no están ejecutando las funciones JavaScript asociadas, a pesar de que el código parece estar correctamente estructurado y las IDs han sido verificadas múltiples veces. 
+No se diagnosticar por qué los botones no están ejecutando las funciones JavaScript asociadas, a pesar de que el código parece estar correctamente estructurado y las IDs han sido verificadas múltiples veces. 
 
-# Elida Cubaque 
-# 27418291
+## Elida Cubaque 
+## 27418291
