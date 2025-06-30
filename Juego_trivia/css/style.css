@@ -5,8 +5,8 @@
 
 /* Variables CSS para colores y espaciado, para fácil mantenimiento */
 :root {
-    --primary-color: #4CAF50; /* Verde vibrante */
-    --primary-dark: #388E3C; /* Verde más oscuro */
+    --primary-color: #4CAF50; 
+    --primary-dark: #388E3C; 
     --secondary-color: #2196F3; /* Azul */
     --danger-color: #F44336; /* Rojo para errores/salir */
     --warning-color: #FFC107; /* Amarillo para advertencias (ej. temporizador bajo) */
