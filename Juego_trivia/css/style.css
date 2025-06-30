@@ -1,0 +1,374 @@
+/*
+ * Mi archivo de estilos principal para la aplicación de Trivia.
+ * Aquí defino cómo se ve cada elemento en mi página.
+ */
+
+/* Variables CSS para colores y espaciado, para fácil mantenimiento */
+:root {
+    --primary-color: #4CAF50; /* Verde vibrante */
+    --primary-dark: #388E3C; /* Verde más oscuro */
+    --secondary-color: #2196F3; /* Azul */
+    --danger-color: #F44336; /* Rojo para errores/salir */
+    --warning-color: #FFC107; /* Amarillo para advertencias (ej. temporizador bajo) */
+    --text-color: #333; /* Color de texto oscuro */
+    --background-color: #f0f2f5; /* Fondo claro */
+    --card-background: #ffffff; /* Fondo de tarjetas/secciones */
+    --border-color: #ddd; /* Color de borde ligero */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --border-radius: 8px; /* Bordes redondeados */
+    --spacing-unit: 16px; /* Unidad base de espaciado */
+}
+
+/* Estilos globales y reseteo básico */
+*, *::before, *::after {
+    box-sizing: border-box; /* Incluir padding y borde en el tamaño total */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Mi fuente preferida */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex; /* Uso flexbox para centrar mi contenido principal */
+    flex-direction: column;
+    min-height: 100vh; /* Aseguro que ocupe al menos toda la altura de la ventana */
+}
+
+header {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: var(--spacing-unit) 0;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-size: 2.2em;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+main {
+    flex-grow: 1; /* Permito que mi contenido principal ocupe el espacio disponible */
+    display: flex; /* Uso flexbox para centrar y manejar las pantallas del juego */
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-unit);
+}
+
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: calc(var(--spacing-unit) / 2);
+    font-size: 0.9em;
+}
+
+/* Contenedores de pantallas de juego */
+.game-screen {
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 600px; /* Limito el ancho máximo para pantallas grandes */
+    text-align: center;
+}
+
+/* Clase para ocultar pantallas */
+.hidden {
+    display: none !important; /* Uso !important para asegurar que se oculte */
+}
+
+.active {
+    display: block; /* Muestro la pantalla activa */
+}
+
+/* --- Estilos para los formularios de configuración --- */
+#config-screen h2 {
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.config-form-group {
+    margin-bottom: var(--spacing-unit);
+    text-align: left; /* Alineo mis etiquetas y campos a la izquierda */
+}
+
+.config-form-group label {
+    display: block; /* Hago que las etiquetas ocupen su propia línea */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.config-form-group input[type="text"],
+.config-form-group input[type="number"],
+.config-form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease; /* Pequeña animación al enfocar */
+}
+
+.config-form-group input:focus,
+.config-form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none; /* Elimino el contorno predeterminado del navegador */
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block; /* Para que ocupe su propia línea */
+}
+
+/* --- Estilos para Botones --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: calc(var(--spacing-unit) / 2);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border: none; /* Empiezo sin borde para mis botones */
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn.secondary:hover {
+    background-color: #1976D2; /* Tono más oscuro de azul */
+    transform: translateY(-2px);
+}
+
+.btn.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn.danger:hover {
+    background-color: #D32F2F; /* Tono más oscuro de rojo */
+    transform: translateY(-2px);
+}
+
+/* --- Estilos para Pantalla de Carga --- */
+#loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px; /* Aseguro una altura mínima para que el spinner se vea bien */
+}
+
+.loading-spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color); /* Color de la parte que "gira" */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animación de giro */
+    margin-bottom: var(--spacing-unit);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Estilos para Pantalla de Juego --- */
+#game-screen .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-unit);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#game-screen #questionText {
+    font-size: 1.5em;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    min-height: 80px; /* Aseguro espacio para la pregunta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.timer-container {
+    font-weight: bold;
+    color: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timerDisplay {
+    font-size: 1.5em;
+    margin-top: 5px;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden; /* Para que la barra de progreso se vea bien dentro */
+}
+
+.timer-bar::before { /* La barra de progreso real */
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%; /* Empieza al 100% y se reducirá con JS */
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 1s linear; /* Para una transición suave */
+}
+
+.timer-low { /* Clase para cuando el tiempo es bajo */
+    color: var(--danger-color);
+}
+
+.timer-bar.timer-low::before {
+    background-color: var(--danger-color);
+}
+
+.answer-buttons-grid {
+    display: grid; /* Utilizo CSS Grid para las opciones de respuesta */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adaptativo */
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+}
+
+.answer-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+.answer-btn:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+.answer-btn.selected { /* Clase para la respuesta seleccionada por el usuario */
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Sombra de enfoque */
+}
+
+.answer-btn.correct { /* Clase para la respuesta correcta */
+    background-color: #66BB6A; /* Verde más claro */
+    border-color: #4CAF50;
+    color: white;
+}
+
+.answer-btn.incorrect { /* Clase para la respuesta incorrecta */
+    background-color: #EF5350; /* Rojo más claro */
+    border-color: #F44336;
+    color: white;
+}
+
+.answer-btn:disabled { /* Estilo para botones deshabilitados después de responder */
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.feedback-message {
+    margin-top: var(--spacing-unit);
+    font-weight: bold;
+    font-size: 1.1em;
+    min-height: 20px; /* Aseguro espacio para el mensaje */
+}
+
+/* --- Estilos para Pantalla de Resultados --- */
+#results-screen h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-unit);
+}
+
+.results-summary {
+    background-color: #e8f5e9; /* Fondo suave para el resumen */
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    text-align: left; /* Alineo el texto a la izquierda en el resumen */
+}
+
+.results-summary p {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.results-summary p span {
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.results-actions .btn {
+    margin-top: var(--spacing-unit);
+}
+
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    /* Ajustes generales para pantallas pequeñas */
+    body {
+        font-size: 14px; /* Reduzco el tamaño de fuente base */
+    }
+
+    main {
+        padding: calc(var(--spacing-unit) / 2); /* Menos padding */
+    }
+
+    .game-screen {
+        padding: var(--spacing-unit);
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    #game-screen #questionText {
+        font-size: 1.2em;
+        min-height: 60px;
+    }
+
+    .answer-buttons-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+        gap: calc(var(--spacing-unit) / 2);
+    }
+}

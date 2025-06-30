@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Trivia Challenge URU!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>¡Trivia!</h1>
+        <p>Demuestra cuánto sabes.</p>
+    </header>
+
+    <main>
+        <section id="config-screen" class="game-screen active">
+            <h2>Configura tu Juego</h2>
+            <div class="config-form-group">
+                <label for="playerName">Tu Nombre:</label>
+                <input type="text" id="playerName" minlength="2" maxlength="20" required placeholder="Ej: Juan Pérez">
+                <span class="error-message" id="playerNameError"></span>
+            </div>
+
+            <div class="config-form-group">
+                <label for="numQuestions">Cantidad de Preguntas (5-20):</label>
+                <input type="number" id="numQuestions" min="5" max="20" value="10">
+            </div>
+
+            <div class="config-form-group">
+                <label for="difficulty">Dificultad:</label>
+                <select id="difficulty">
+                    <option value="any">Mixta</option>
+                    <option value="easy">Fácil</option>
+                    <option value="medium">Medio</option>
+                    <option value="hard">Difícil</option>
+                </select>
+            </div>
+
+            <div class="config-form-group">
+                <label for="category">Categoría:</label>
+                <select id="category">
+                    <option value="any">Todas las categorías</option>
+                    </select>
+            </div>
+
+            <button id="startGameButton" class="btn primary">¡Empezar Juego!</button>
+        </section>
+
+        <section id="loading-screen" class="game-screen hidden">
+            <div class="loading-spinner"></div>
+            <p>Cargando preguntas...</p>
+        </section>
+
+        <section id="game-screen" class="game-screen hidden">
+            <div class="game-header">
+                <p>Pregunta <span id="questionCounter">1</span> de <span id="totalQuestions">10</span></p>
+                <div class="timer-container">
+                    Tiempo Restante: <span id="timerDisplay">20</span>s
+                    <div id="timerBar" class="timer-bar"></div>
+                </div>
+            </div>
+
+            <h2 id="questionText">Cargando pregunta...</h2>
+
+            <div id="answerButtons" class="answer-buttons-grid">
+                </div>
+
+            <p class="feedback-message" id="feedbackMessage"></p>
+        </section>
+
+        <section id="results-screen" class="game-screen hidden">
+            <h2>¡Juego Terminado!</h2>
+            <div class="results-summary">
+                <p>Jugador: <span id="finalPlayerName"></span></p>
+                <p>Puntuación Total: <span id="finalScore"></span> puntos</p>
+                <p>Correctas: <span id="correctAnswers"></span> de <span id="questionsAttempted"></span></p>
+                <p>Porcentaje de Aciertos: <span id="accuracyPercentage"></span>%</p>
+                <p>Tiempo Promedio por Pregunta: <span id="averageTime"></span> segundos</p>
+            </div>
+
+            <div class="results-actions">
+                <button id="restartGameSameConfig" class="btn primary">Jugar de Nuevo</button>
+                <button id="changeConfigAndRestart" class="btn secondary">Cambiar Configuración</button>
+                <button id="exitGame" class="btn danger">Salir del Juego</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Elida Cubaque</p>
+    </footer>
+
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/ui-handlers.js"></script>
+    <script type="module" src="js/game-logic.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
