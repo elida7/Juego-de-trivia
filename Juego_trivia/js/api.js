@@ -3,6 +3,10 @@
 // Cache de categorías para no cargarlas múltiples veces
 let categoriesCache = null;
 
+/**
+ * Obtiene las categorías disponibles desde la API
+ * @returns {Promise<Array>} Lista de categorías ordenadas
+ */
 
 export async function fetchCategories() {
     if (categoriesCache) return categoriesCache;
@@ -23,6 +27,11 @@ export async function fetchCategories() {
         throw error;
     }
 }
+/**
+ * Obtiene preguntas de la API según configuración
+ * @param {Object} config - Configuración del juego
+ * @returns {Promise<Array>} Lista de preguntas procesadas
+ */
 
 
 export async function fetchQuestions(config) {
@@ -50,4 +59,25 @@ export async function fetchQuestions(config) {
         console.error('Error al obtener preguntas:', error);
         throw error;
     }
+}
+
+/**
+ * Procesa una pregunta decodificando entidades HTML
+ */
+function processQuestion(question) {
+    return {
+        ...question,
+        question: decodeHTMLEntities(question.question),
+        correct_answer: decodeHTMLEntities(question.correct_answer),
+        incorrect_answers: question.incorrect_answers.map(decodeHTMLEntities)
+    };
+}
+
+/**
+ * Decodifica entidades HTML (como &amp; -> &)
+ */
+function decodeHTMLEntities(text) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    return textArea.value;
 }
