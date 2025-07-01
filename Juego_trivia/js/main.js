@@ -51,3 +51,43 @@ startGameButton.addEventListener('click', async (e) => {
     }
 });
 
+restartButton.addEventListener('click', () => {
+    initGame(gameState.questions);
+    showScreen('game');
+    updateQuestionUI();
+    startTimer(handleTimeUp);
+});
+
+changeConfigButton.addEventListener('click', () => {
+    showScreen('config');
+});
+
+exitButton.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que quieres salir del juego?')) {
+        // window.close(); // Solo funciona si la ventana fue abierta por script
+        window.location.href = 'about:blank'; // Alternativa
+    }
+});
+
+
+async function loadCategories() {
+    try {
+        const categories = await fetchCategories();
+        const categorySelect = document.getElementById('category');
+        
+      
+        categories.slice(0, 10).forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al cargar categorías:', error);
+       
+    }
+}
+
+
+function handleTimeUp() {
+}
