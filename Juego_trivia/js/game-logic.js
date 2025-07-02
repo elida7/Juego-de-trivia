@@ -116,7 +116,7 @@ export function handleAnswer(selectedAnswer) {
     hideFeedbackMessage(); // Esconde cualquier mensaje previo.
 
     const currentQuestion  = gameState.questions[gameState.currentQuestionIndex];
-    const isCorrect = selectedAnswer === question.correct_answer;
+    const isCorrect = selectedAnswer === currentQuestion.correct_answer;
     
     if (isCorrect) {
         gameState.score += 10; //suma 10 si es correcta

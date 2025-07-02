@@ -74,14 +74,14 @@ export function updateQuestionUI(questionData, currentNum, totalNum) {
     answerButtonsContainer.innerHTML = '';
     
     // Mezclar respuestas en un solo arreglo
-    const answers = [...question.incorrect_answers, question.correct_answer];
+    const answers = [...questionData.incorrect_answers, questionData.correct_answer];
     // mezcla aleatoriamente para que la respuesta correcta no siempre esté en el mismo lugar.
     const shuffledAnswers = shuffleArray(answers);
     
     // por cada respuesta crea boton y lo añade
     shuffledAnswers.forEach(answer => {
         const button = document.createElement('button');
-        button.classList.add = 'answer-btn'; // añade la clase de estilo
+        button.classList.add('answer-btn'); // añade la clase de estilo
         button.innerHTML = decodeHtmlEntities(answer); // Decodifica el texto de la respuesta.
         //  añade un 'event listener' al botón. Cuando se haga clic, llamo a 'handleAnswer'.
         // Pasa el texto de la respuesta como argumento.
